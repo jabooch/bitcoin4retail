@@ -1,0 +1,71 @@
+name: Publish Bitcoin4Retail Social
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "social/publish/**/*.json"
+  workflow_dispatch:
+    inputs:
+      manifest_path:
+        description: "Path to a publish manifest JSON file"
+        required: true
+        default: "social/publish/latest.json"
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Resolve manifest path
+        id: manifest
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            FILE="${{ inputs.manifest_path }}"
+          else
+            FILE="$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- 'social/publish/**/*.json' | tail -n 1)"
+          fi
+
+          if [ -z "$FILE" ] || [ ! -f "$FILE" ]; then
+            echo "No publish manifest found."
+            exit 1
+          fi
+
+          echo "path=$FILE" >> "$GITHUB_OUTPUT"
+
+      - name: Validate manifest approval
+        shell: bash
+        run: |
+          FILE="${{ steps.manifest.outputs.path }}"
+          jq -e '.approved == true' "$FILE" >/dev/null || {
+            echo "Manifest is not approved for publishing."
+            exit 1
+          }
+          jq -e '.posts | type == "array" and length > 0' "$FILE" >/dev/null || {
+            echo "Manifest has no posts."
+            exit 1
+          }
+
+      - name: Buffer dry run
+        env:
+          B4R_AUTOMATION_SECRET: ${{ secrets.B4R_AUTOMATION_SECRET }}
+        shell: bash
+        run: |
+          FILE="${{ steps.manifest.outputs.path }}"
+          jq '.dryRun = true | {dryRun, organizationId, posts}' "$FILE" > /tmp/dry-run.json
+          curl --fail-with-body --silent --show-error             -X POST "https://bitcoin4retail.com/api/buffer/publish"             -H "Authorization: Bearer $B4R_AUTOMATION_SECRET"             -H "Content-Type: application/json"             --data-binary @/tmp/dry-run.json
+
+      - name: Publish approved package
+        env:
+          B4R_AUTOMATION_SECRET: ${{ secrets.B4R_AUTOMATION_SECRET }}
+        shell: bash
+        run: |
+          FILE="${{ steps.manifest.outputs.path }}"
+          jq '.dryRun = false | {dryRun, organizationId, posts}' "$FILE" > /tmp/publish.json
+          curl --fail-with-body --silent --show-error             -X POST "https://bitcoin4retail.com/api/buffer/publish"             -H "Authorization: Bearer $B4R_AUTOMATION_SECRET"             -H "Content-Type: application/json"             --data-binary @/tmp/publish.json             | tee /tmp/buffer-result.json
