@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "social/publish/**/*.json"
+      - "social/publish/*.json"
   workflow_dispatch:
     inputs:
       manifest_path:
@@ -31,7 +31,7 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             FILE="${{ inputs.manifest_path }}"
           else
-            FILE="$(git diff --name-only HEAD^ HEAD | grep -E '^social/publish/.*\.json
+            FILE="$(git diff --name-only HEAD^ HEAD | grep -E '^social/publish/[^/]+\.json$' | tail -n 1 || true)"
           fi
 
           if [ -z "$FILE" ] || [ ! -f "$FILE" ]; then
@@ -61,53 +61,31 @@ jobs:
         run: |
           FILE="${{ steps.manifest.outputs.path }}"
           jq '.dryRun = true | {dryRun, organizationId, posts}' "$FILE" > /tmp/dry-run.json
-          curl --fail-with-body --silent --show-error             -X POST "https://bitcoin4retail.com/api/buffer/publish"             -H "Authorization: Bearer $B4R_AUTOMATION_SECRET"             -H "Content-Type: application/json"             --data-binary @/tmp/dry-run.json
+          curl --fail-with-body --silent --show-error \
+            -X POST "https://bitcoin4retail.com/api/buffer/publish" \
+            -H "Authorization: Bearer $B4R_AUTOMATION_SECRET" \
+            -H "Content-Type: application/json" \
+            --data-binary @/tmp/dry-run.json
+
+      - name: Check test-only mode
+        id: mode
+        shell: bash
+        run: |
+          FILE="${{ steps.manifest.outputs.path }}"
+          TEST_ONLY="$(jq -r '.testOnly // false' "$FILE")"
+          echo "test_only=$TEST_ONLY" >> "$GITHUB_OUTPUT"
 
       - name: Publish approved package
+        if: steps.mode.outputs.test_only != 'true'
         env:
           B4R_AUTOMATION_SECRET: ${{ secrets.B4R_AUTOMATION_SECRET }}
         shell: bash
         run: |
           FILE="${{ steps.manifest.outputs.path }}"
           jq '.dryRun = false | {dryRun, organizationId, posts}' "$FILE" > /tmp/publish.json
-          curl --fail-with-body --silent --show-error             -X POST "https://bitcoin4retail.com/api/buffer/publish"             -H "Authorization: Bearer $B4R_AUTOMATION_SECRET"             -H "Content-Type: application/json"             --data-binary @/tmp/publish.json             | tee /tmp/buffer-result.json
- | tail -n 1 || true)"
-          fi
-
-          if [ -z "$FILE" ] || [ ! -f "$FILE" ]; then
-            echo "No publish manifest found."
-            exit 1
-          fi
-
-          echo "path=$FILE" >> "$GITHUB_OUTPUT"
-
-      - name: Validate manifest approval
-        shell: bash
-        run: |
-          FILE="${{ steps.manifest.outputs.path }}"
-          jq -e '.approved == true' "$FILE" >/dev/null || {
-            echo "Manifest is not approved for publishing."
-            exit 1
-          }
-          jq -e '.posts | type == "array" and length > 0' "$FILE" >/dev/null || {
-            echo "Manifest has no posts."
-            exit 1
-          }
-
-      - name: Buffer dry run
-        env:
-          B4R_AUTOMATION_SECRET: ${{ secrets.B4R_AUTOMATION_SECRET }}
-        shell: bash
-        run: |
-          FILE="${{ steps.manifest.outputs.path }}"
-          jq '.dryRun = true | {dryRun, organizationId, posts}' "$FILE" > /tmp/dry-run.json
-          curl --fail-with-body --silent --show-error             -X POST "https://bitcoin4retail.com/api/buffer/publish"             -H "Authorization: Bearer $B4R_AUTOMATION_SECRET"             -H "Content-Type: application/json"             --data-binary @/tmp/dry-run.json
-
-      - name: Publish approved package
-        env:
-          B4R_AUTOMATION_SECRET: ${{ secrets.B4R_AUTOMATION_SECRET }}
-        shell: bash
-        run: |
-          FILE="${{ steps.manifest.outputs.path }}"
-          jq '.dryRun = false | {dryRun, organizationId, posts}' "$FILE" > /tmp/publish.json
-          curl --fail-with-body --silent --show-error             -X POST "https://bitcoin4retail.com/api/buffer/publish"             -H "Authorization: Bearer $B4R_AUTOMATION_SECRET"             -H "Content-Type: application/json"             --data-binary @/tmp/publish.json             | tee /tmp/buffer-result.json
+          curl --fail-with-body --silent --show-error \
+            -X POST "https://bitcoin4retail.com/api/buffer/publish" \
+            -H "Authorization: Bearer $B4R_AUTOMATION_SECRET" \
+            -H "Content-Type: application/json" \
+            --data-binary @/tmp/publish.json \
+            | tee /tmp/buffer-result.json
