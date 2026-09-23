@@ -62,10 +62,26 @@ jobs:
           FILE="${{ steps.manifest.outputs.path }}"
           jq '.dryRun = true | {dryRun, organizationId, posts}' "$FILE" > /tmp/dry-run.json
           curl --fail-with-body --silent --show-error \
-            -X POST "https://bitcoin4retail.com/api/buffer/publish" \
+            -X POST "https://www.bitcoin4retail.com/api/buffer/publish" \
             -H "Authorization: Bearer $B4R_AUTOMATION_SECRET" \
             -H "Content-Type: application/json" \
-            --data-binary @/tmp/dry-run.json
+            --data-binary @/tmp/dry-run.json \
+            | tee /tmp/dry-run-result.json
+
+      - name: Validate Buffer preflight
+        shell: bash
+        run: |
+          FILE="${{ steps.manifest.outputs.path }}"
+          EXPECTED="$(jq '.posts | length' "$FILE")"
+          jq -e --argjson expected "$EXPECTED" '
+            .ok == true and
+            .dryRun == true and
+            (.prepared | length) == $expected
+          ' /tmp/dry-run-result.json >/dev/null || {
+            echo "Buffer dry run did not prepare all requested posts."
+            cat /tmp/dry-run-result.json
+            exit 1
+          }
 
       - name: Check test-only mode
         id: mode
@@ -84,7 +100,7 @@ jobs:
           FILE="${{ steps.manifest.outputs.path }}"
           jq '.dryRun = false | {dryRun, organizationId, posts}' "$FILE" > /tmp/publish.json
           curl --fail-with-body --silent --show-error \
-            -X POST "https://bitcoin4retail.com/api/buffer/publish" \
+            -X POST "https://www.bitcoin4retail.com/api/buffer/publish" \
             -H "Authorization: Bearer $B4R_AUTOMATION_SECRET" \
             -H "Content-Type: application/json" \
             --data-binary @/tmp/publish.json \
