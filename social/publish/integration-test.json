@@ -1,0 +1,42 @@
+{
+  "approved": true,
+  "testOnly": true,
+  "dryRun": true,
+  "posts": [
+    {
+      "service": "instagram",
+      "text": "Bitcoin4Retail integration test — dry run only.",
+      "mode": "addToQueue",
+      "media": [
+        {
+          "type": "image",
+          "url": "https://bitcoin4retail.com/favicon.svg",
+          "altText": "Bitcoin4Retail"
+        }
+      ]
+    },
+    {
+      "service": "tiktok",
+      "text": "Bitcoin4Retail integration test — dry run only.",
+      "mode": "addToQueue",
+      "media": [
+        {
+          "type": "image",
+          "url": "https://bitcoin4retail.com/favicon.svg"
+        }
+      ]
+    },
+    {
+      "service": "youtube",
+      "youtubeTitle": "Bitcoin4Retail Integration Test",
+      "text": "Bitcoin4Retail integration test — dry run only.",
+      "mode": "addToQueue",
+      "media": [
+        {
+          "type": "image",
+          "url": "https://bitcoin4retail.com/favicon.svg"
+        }
+      ]
+    }
+  ]
+}
