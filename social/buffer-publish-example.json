@@ -1,0 +1,50 @@
+{
+  "dryRun": true,
+  "posts": [
+    {
+      "service": "instagram",
+      "channelName": "bitcoin4retail",
+      "text": "Bitcoin payments for retailers. Practical setup, economics and workflow. https://bitcoin4retail.com",
+      "mode": "addToQueue",
+      "media": [
+        {
+          "type": "image",
+          "url": "https://bitcoin4retail.com/media/social/YYYY-MM-DD/instagram.png",
+          "altText": "Bitcoin4Retail guide to practical Bitcoin payments for retailers."
+        }
+      ]
+    },
+    {
+      "service": "tiktok",
+      "channelName": "bitcoin4retail",
+      "text": "Bitcoin acceptance is a business decision, not a crypto identity. bitcoin4retail.com",
+      "mode": "addToQueue",
+      "media": [
+        {
+          "type": "video",
+          "url": "https://bitcoin4retail.com/media/social/YYYY-MM-DD/vertical.mp4",
+          "thumbnailOffset": 2000
+        }
+      ]
+    },
+    {
+      "service": "youtube",
+      "channelName": "Bitcoin4Retail",
+      "youtubeTitle": "Retailers Can Accept Bitcoin Without Rebuilding Their Payment Stack",
+      "text": "Practical Bitcoin payment guidance for retailers. https://bitcoin4retail.com",
+      "mode": "addToQueue",
+      "media": [
+        {
+          "type": "video",
+          "url": "https://bitcoin4retail.com/media/social/YYYY-MM-DD/vertical.mp4"
+        }
+      ]
+    },
+    {
+      "service": "x",
+      "channelName": "bitcoin4retail",
+      "text": "Bitcoin payments for retailers — without rebuilding the business around crypto. https://bitcoin4retail.com",
+      "mode": "addToQueue"
+    }
+  ]
+}

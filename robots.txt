@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bitcoin4retail.com/sitemap.xml
