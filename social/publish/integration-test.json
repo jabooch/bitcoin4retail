@@ -10,7 +10,7 @@
       "media": [
         {
           "type": "image",
-          "url": "https://bitcoin4retail.com/favicon.svg",
+          "url": "https://www.bitcoin4retail.com/media/social/readiness-check.png",
           "altText": "Bitcoin4Retail"
         }
       ]
@@ -22,7 +22,7 @@
       "media": [
         {
           "type": "image",
-          "url": "https://bitcoin4retail.com/favicon.svg"
+          "url": "https://www.bitcoin4retail.com/media/social/readiness-check.png"
         }
       ]
     },
@@ -34,10 +34,10 @@
       "media": [
         {
           "type": "image",
-          "url": "https://bitcoin4retail.com/favicon.svg"
+          "url": "https://www.bitcoin4retail.com/media/social/readiness-check.png"
         }
       ]
     }
   ],
-  "testRun": 4
+  "testRun": 5
 }
