@@ -26,5 +26,6 @@
       "text": "Bitcoin4Retail media hosting integration test.",
       "mode": "addToQueue"
     }
-  ]
+  ],
+  "testRun": 5
 }
