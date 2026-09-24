@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" role="img" aria-labelledby="t d">
+<title id="t">Set up Bitcoin on Square in four steps</title>
+<desc id="d">Enable Bitcoin, choose settlement, test and train, then accept payments.</desc>
+<style>
+.bg{fill:#fbfaf6}.panel{fill:#fff;stroke:#d9d5ca;stroke-width:2}.ink{fill:#11110f}.muted{fill:#6c6f68}.orange{fill:#f7931a}.green{fill:#0d8a62}.line{stroke:#c8c4b9;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.h{font:900 36px system-ui,sans-serif}.s{font:800 22px system-ui,sans-serif}.p{font:500 18px system-ui,sans-serif}.num{font:900 25px system-ui,sans-serif;fill:#fff}.ui{font:700 16px system-ui,sans-serif}
+</style>
+<rect class="bg" width="1400" height="700" rx="30"/>
+<text x="700" y="65" text-anchor="middle" class="h ink">Set up Bitcoin on Square</text>
+<text x="700" y="105" text-anchor="middle" class="p muted">Enable it. Choose settlement. Test it. You’re ready.</text>
+
+<g transform="translate(35 155)">
+<rect class="panel" width="305" height="470" rx="26"/>
+<circle class="orange" cx="48" cy="50" r="29"/><text x="48" y="59" text-anchor="middle" class="num">1</text>
+<text x="92" y="58" class="s ink">Enable Bitcoin</text>
+<rect x="40" y="135" width="225" height="245" rx="18" fill="#20211e"/>
+<rect x="55" y="152" width="195" height="205" rx="10" fill="#fff"/>
+<text x="75" y="186" class="ui ink">Square Dashboard</text>
+<text x="75" y="224" class="ui muted">Payments</text>
+<text x="75" y="260" class="ui ink">₿ Bitcoin</text>
+<rect x="75" y="292" width="112" height="38" rx="19" fill="#f7931a"/>
+<circle cx="168" cy="311" r="15" fill="#fff"/>
+<text x="152" y="425" text-anchor="middle" class="p muted">Turn it on.</text>
+</g>
+
+<path class="line" d="M350 390h38m-14-14 14 14-14 14"/>
+
+<g transform="translate(365 155)">
+<rect class="panel" width="305" height="470" rx="26"/>
+<circle class="orange" cx="48" cy="50" r="29"/><text x="48" y="59" text-anchor="middle" class="num">2</text>
+<text x="92" y="58" class="s ink">Choose settlement</text>
+<rect x="42" y="150" width="220" height="210" rx="18" fill="#fff" stroke="#d9d5ca" stroke-width="2"/>
+<text x="65" y="185" class="ui ink">Receive Bitcoin sales as</text>
+<rect x="65" y="210" width="175" height="55" rx="12" fill="#fff0dc" stroke="#f7931a" stroke-width="2"/>
+<text x="85" y="244" class="ui ink">$  USD</text>
+<circle cx="219" cy="237" r="9" fill="#f7931a"/>
+<rect x="65" y="278" width="175" height="55" rx="12" fill="#fff" stroke="#d9d5ca" stroke-width="2"/>
+<text x="85" y="312" class="ui ink">₿  BTC</text>
+<circle cx="219" cy="305" r="9" fill="none" stroke="#9b9d96" stroke-width="2"/>
+<text x="152" y="425" text-anchor="middle" class="p muted">Your choice.</text>
+</g>
+
+<path class="line" d="M680 390h38m-14-14 14 14-14 14"/>
+
+<g transform="translate(695 155)">
+<rect class="panel" width="305" height="470" rx="26"/>
+<circle class="orange" cx="48" cy="50" r="29"/><text x="48" y="59" text-anchor="middle" class="num">3</text>
+<text x="92" y="58" class="s ink">Test &amp; train</text>
+<rect x="72" y="145" width="160" height="185" rx="22" fill="#20211e"/>
+<rect x="87" y="162" width="130" height="145" rx="10" fill="#fff"/>
+<circle class="green" cx="152" cy="212" r="28"/>
+<path d="M139 212l10 10 19-22" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="152" y="270" text-anchor="middle" class="ui ink">Test successful</text>
+<circle class="green" cx="75" cy="360" r="11"/><path d="M69 360l4 4 8-9" stroke="#fff" stroke-width="3" fill="none"/>
+<text x="96" y="366" class="ui ink">Run one test</text>
+<circle class="green" cx="75" cy="397" r="11"/><path d="M69 397l4 4 8-9" stroke="#fff" stroke-width="3" fill="none"/>
+<text x="96" y="403" class="ui ink">Show the team</text>
+<text x="152" y="445" text-anchor="middle" class="p muted">One repeatable flow.</text>
+</g>
+
+<path class="line" d="M1010 390h38m-14-14 14 14-14 14"/>
+
+<g transform="translate(1025 155)">
+<rect class="panel" width="340" height="470" rx="26"/>
+<circle class="orange" cx="48" cy="50" r="29"/><text x="48" y="59" text-anchor="middle" class="num">4</text>
+<text x="92" y="58" class="s ink">Ready to accept</text>
+<rect x="70" y="150" width="200" height="220" rx="22" fill="#20211e"/>
+<rect x="88" y="170" width="164" height="170" rx="12" fill="#fff"/>
+<circle class="orange" cx="170" cy="225" r="34"/><text x="170" y="239" text-anchor="middle" font-size="42" font-weight="900" fill="#fff">₿</text>
+<text x="170" y="292" text-anchor="middle" class="ui ink">Ready to accept</text>
+<text x="170" y="316" text-anchor="middle" class="ui ink">Bitcoin</text>
+<text x="170" y="425" text-anchor="middle" class="p muted">That’s it.</text>
+</g>
+</svg>
