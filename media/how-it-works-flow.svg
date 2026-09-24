@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" role="img" aria-labelledby="t d">
+<title id="t">Accept Bitcoin with Square in three steps</title>
+<desc id="d">Merchant selects Bitcoin, customer scans a Lightning QR code, and payment is confirmed.</desc>
+<style>
+.bg{fill:#fbfaf6}.panel{fill:#fff;stroke:#d9d5ca;stroke-width:2}.ink{fill:#11110f}.muted{fill:#6c6f68}.orange{fill:#f7931a}.green{fill:#0d8a62}.line{stroke:#c8c4b9;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.h{font:900 36px system-ui,sans-serif}.s{font:700 24px system-ui,sans-serif}.p{font:500 20px system-ui,sans-serif}.num{font:900 28px system-ui,sans-serif;fill:#fff}.ui{font:700 18px system-ui,sans-serif}
+</style>
+<rect class="bg" width="1400" height="700" rx="30"/>
+<text x="700" y="65" text-anchor="middle" class="h ink">Accept Bitcoin with Square</text>
+<text x="700" y="105" text-anchor="middle" class="p muted">Three simple steps. One familiar checkout.</text>
+
+<g transform="translate(55 155)">
+<rect class="panel" width="390" height="470" rx="28"/>
+<circle class="orange" cx="55" cy="55" r="32"/><text x="55" y="65" text-anchor="middle" class="num">1</text>
+<text x="105" y="64" class="s ink">Select Bitcoin</text>
+<text x="36" y="110" class="p muted">Choose Bitcoin at checkout.</text>
+<rect x="70" y="165" width="250" height="215" rx="22" fill="#20211e"/>
+<rect x="88" y="185" width="214" height="155" rx="12" fill="#fff"/>
+<text x="112" y="222" class="ui muted">Card</text>
+<text x="112" y="264" class="ui muted">Tap to Pay</text>
+<rect x="103" y="286" width="184" height="42" rx="10" fill="#fff0dc" stroke="#f7931a" stroke-width="2"/>
+<circle class="orange" cx="126" cy="307" r="13"/><text x="126" y="314" text-anchor="middle" class="ui" fill="#fff">₿</text>
+<text x="150" y="314" class="ui ink">Bitcoin</text>
+<rect x="130" y="380" width="130" height="40" rx="10" fill="#333532"/>
+<text x="195" y="406" text-anchor="middle" class="ui" fill="#fff">REGISTER</text>
+<text x="195" y="445" text-anchor="middle" class="p muted">Tap once.</text>
+</g>
+
+<path class="line" d="M470 390h55m-18-18 18 18-18 18"/>
+
+<g transform="translate(505 155)">
+<rect class="panel" width="390" height="470" rx="28"/>
+<circle class="orange" cx="55" cy="55" r="32"/><text x="55" y="65" text-anchor="middle" class="num">2</text>
+<text x="105" y="64" class="s ink">Scan &amp; pay</text>
+<text x="36" y="110" class="p muted">Customer scans with a wallet.</text>
+<rect x="48" y="170" width="190" height="240" rx="22" fill="#20211e"/>
+<rect x="65" y="190" width="156" height="185" rx="12" fill="#fff"/>
+<text x="143" y="220" text-anchor="middle" class="ui ink">Pay with Bitcoin</text>
+<g fill="#11110f">
+<rect x="95" y="245" width="18" height="18"/><rect x="117" y="245" width="10" height="10"/><rect x="133" y="245" width="22" height="22"/><rect x="162" y="245" width="12" height="12"/><rect x="181" y="245" width="16" height="16"/>
+<rect x="95" y="270" width="10" height="25"/><rect x="111" y="270" width="18" height="14"/><rect x="136" y="275" width="12" height="22"/><rect x="154" y="270" width="20" height="12"/><rect x="181" y="270" width="16" height="26"/>
+<rect x="95" y="303" width="24" height="20"/><rect x="125" y="300" width="13" height="13"/><rect x="145" y="302" width="24" height="21"/><rect x="176" y="302" width="21" height="21"/>
+</g>
+<text x="143" y="350" text-anchor="middle" class="ui muted">Lightning QR</text>
+<rect x="265" y="205" width="82" height="165" rx="18" fill="#222"/>
+<rect x="274" y="220" width="64" height="130" rx="10" fill="#fff"/>
+<circle class="orange" cx="306" cy="276" r="24"/><text x="306" y="287" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">₿</text>
+<text x="306" y="326" text-anchor="middle" font-size="13" font-weight="800" class="ink">PAY</text>
+<text x="195" y="445" text-anchor="middle" class="p muted">Scan. Confirm.</text>
+</g>
+
+<path class="line" d="M920 390h55m-18-18 18 18-18 18"/>
+
+<g transform="translate(955 155)">
+<rect class="panel" width="390" height="470" rx="28"/>
+<circle class="orange" cx="55" cy="55" r="32"/><text x="55" y="65" text-anchor="middle" class="num">3</text>
+<text x="105" y="64" class="s ink">Payment confirmed</text>
+<text x="36" y="110" class="p muted">Square confirms the transaction.</text>
+<rect x="70" y="170" width="250" height="215" rx="22" fill="#20211e"/>
+<rect x="88" y="190" width="214" height="155" rx="12" fill="#fff"/>
+<circle class="green" cx="195" cy="245" r="42"/>
+<path d="M174 245l15 15 30-34" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="195" y="310" text-anchor="middle" class="ui ink">Payment confirmed</text>
+<rect x="130" y="385" width="130" height="40" rx="10" fill="#333532"/>
+<text x="195" y="411" text-anchor="middle" class="ui" fill="#fff">DONE</text>
+<text x="195" y="455" text-anchor="middle" class="p muted">Keep serving customers.</text>
+</g>
+</svg>
