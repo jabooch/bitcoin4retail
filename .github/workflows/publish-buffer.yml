@@ -54,6 +54,12 @@ jobs:
             exit 1
           }
 
+      - name: Install media tools
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-dejavu-core
+
       - name: Render and publish media to site
         id: render
         shell: bash
