@@ -1,43 +1,30 @@
 {
+  "date": "2026-09-24",
   "approved": true,
   "testOnly": true,
-  "dryRun": true,
+  "render": {
+    "date": "2026-09-24-test",
+    "headline": "$100 sale.",
+    "subheadline": "Same Square checkout. Very different processing cost.",
+    "metric": "$2.75 card fee vs $0 Bitcoin",
+    "footer": "bitcoin4retail.com"
+  },
   "posts": [
     {
       "service": "instagram",
-      "text": "Bitcoin4Retail integration test — dry run only.",
-      "mode": "addToQueue",
-      "media": [
-        {
-          "type": "image",
-          "url": "https://www.bitcoin4retail.com/media/social/readiness-check.png",
-          "altText": "Bitcoin4Retail"
-        }
-      ]
+      "text": "Bitcoin4Retail media hosting integration test.",
+      "mode": "addToQueue"
     },
     {
       "service": "tiktok",
-      "text": "Bitcoin4Retail integration test — dry run only.",
-      "mode": "addToQueue",
-      "media": [
-        {
-          "type": "image",
-          "url": "https://www.bitcoin4retail.com/media/social/readiness-check.png"
-        }
-      ]
+      "text": "Bitcoin4Retail media hosting integration test.",
+      "mode": "addToQueue"
     },
     {
       "service": "youtube",
-      "youtubeTitle": "Bitcoin4Retail Integration Test",
-      "text": "Bitcoin4Retail integration test — dry run only.",
-      "mode": "addToQueue",
-      "media": [
-        {
-          "type": "image",
-          "url": "https://www.bitcoin4retail.com/media/social/readiness-check.png"
-        }
-      ]
+      "youtubeTitle": "Bitcoin4Retail Media Hosting Test",
+      "text": "Bitcoin4Retail media hosting integration test.",
+      "mode": "addToQueue"
     }
-  ],
-  "testRun": 6
+  ]
 }
