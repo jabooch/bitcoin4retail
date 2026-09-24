@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-24",
+  "topic": "Square Bitcoin merchant math: the $100 sale test",
+  "approved": false,
+  "blockedReason": "Final generated media could not be mirrored to stable public direct HTTPS URLs on bitcoin4retail.com during this run. Do not publish until media URLs are live and verified.",
+  "facts": {
+    "squareFreeInPersonCardFee": "2.6% + 15c",
+    "example100DollarCardFee": "$2.75",
+    "bitcoinPaymentFeeThrough2026": "0%",
+    "bitcoinPaymentFeeFrom2027": "1%",
+    "bitcoinPaymentMaximum": "$600",
+    "newYorkAvailable": false
+  },
+  "media": {
+    "instagram": "instagram-square-bitcoin-fees-720.mp4",
+    "tiktok": "tiktok-square-bitcoin-fees-720.mp4",
+    "youtube": "youtube-square-bitcoin-fees-720.mp4",
+    "x": "x-square-bitcoin-fees.jpg"
+  },
+  "copy": {
+    "instagram": "$100 sale. Same Square checkout. Very different processing cost.\n\nOn Square Free, a $100 in-person card payment costs $2.75 to process (2.6% + 15¢). Square says Bitcoin payments are 0% processing through Dec. 31, 2026, then 1%.\n\nThe useful merchant question isn’t ‘do I believe in Bitcoin?’ It’s: if customers already want to pay this way, why not measure the economics?\n\nEligible U.S. sellers only; availability can vary; not available to New York sellers; Square currently caps Bitcoin payments at $600.\n\nbitcoin4retail.com/square-bitcoin-fees.html\n\n#Bitcoin #Retail #Square #Payments #SmallBusiness",
+    "tiktok": "A $100 Square Free card-present sale costs $2.75 to process.\n\nSame $100 via Square Bitcoin? $0 through Dec. 31, 2026.\n\nFor retailers, that’s the experiment: put Bitcoin beside cards and measure actual adoption + fee savings.\n\nEligibility limits apply; not available to New York sellers; Square currently caps Bitcoin payments at $600.\n\n#retail #bitcoin #square #smallbusiness",
+    "youtubeTitle": "Square Bitcoin: $0 Fee on a $100 Sale (Through 2026)",
+    "youtube": "On Square Free, a $100 in-person card payment costs $2.75 to process (2.6% + 15¢). Square Bitcoin payments are 0% through Dec. 31, 2026, then 1%.\n\nFor retailers, the practical move is simple: add Bitcoin beside cards and measure real customer usage and fee savings.\n\nEligible U.S. sellers only; availability can vary; not available to New York sellers; Square currently caps Bitcoin payments at $600.\n\nMore retail Bitcoin guides: https://bitcoin4retail.com\n\n#Bitcoin #Retail #Square #Payments #Shorts",
+    "x": "Merchant math: on Square Free, a $100 in-person card sale costs $2.75 to process. Square Bitcoin is $0 through Dec. 31, 2026 (1% after). Eligible U.S. sellers; not NY; $600 max/payment. Add it beside cards and measure usage. bitcoin4retail.com"
+  },
+  "sources": [
+    "https://squareup.com/us/en/payments/our-fees",
+    "https://squareup.com/help/us/en/article/8622-accept-and-manage-bitcoin-payments",
+    "https://squareup.com/us/en/bitcoin"
+  ]
+}
