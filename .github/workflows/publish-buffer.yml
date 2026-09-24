@@ -13,7 +13,7 @@ on:
         default: "social/publish/latest.json"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   publish:
@@ -54,13 +54,58 @@ jobs:
             exit 1
           }
 
+      - name: Render and publish media to site
+        id: render
+        shell: bash
+        run: |
+          FILE="${{ steps.manifest.outputs.path }}"
+          DATE="$(jq -r '.render.date // .date' "$FILE")"
+          python3 scripts/render_social.py "$FILE"
+          test -f "media/social/$DATE/vertical.mp4"
+          test -f "media/social/$DATE/x.jpg"
+          git config user.name "bitcoin4retail-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add "media/social/$DATE/vertical.mp4" "media/social/$DATE/x.jpg"
+          if ! git diff --cached --quiet; then
+            git commit -m "Render social media for $DATE"
+            git push origin HEAD:main
+          fi
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare public media URLs
+        shell: bash
+        run: |
+          FILE="${{ steps.manifest.outputs.path }}"
+          DATE="${{ steps.render.outputs.date }}"
+          BASE="https://www.bitcoin4retail.com/media/social/$DATE"
+          jq --arg vertical "$BASE/vertical.mp4" '
+            .posts |= map(
+              if (.service=="instagram" or .service=="tiktok" or .service=="youtube")
+              then .media=[{"type":"video","url":$vertical}]
+              else . end
+            )
+          ' "$FILE" > /tmp/prepared-manifest.json
+
+      - name: Wait for deployed media
+        shell: bash
+        run: |
+          DATE="${{ steps.render.outputs.date }}"
+          URL="https://www.bitcoin4retail.com/media/social/$DATE/vertical.mp4"
+          for i in $(seq 1 30); do
+            if curl -fsSI "$URL" >/dev/null; then
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "Media deployment timed out."
+          exit 1
+
       - name: Buffer dry run
         env:
           B4R_AUTOMATION_SECRET: ${{ secrets.B4R_AUTOMATION_SECRET }}
         shell: bash
         run: |
-          FILE="${{ steps.manifest.outputs.path }}"
-          jq '.dryRun = true | {dryRun, organizationId, posts}' "$FILE" > /tmp/dry-run.json
+          jq '.dryRun = true | {dryRun, organizationId, posts}' /tmp/prepared-manifest.json > /tmp/dry-run.json
           curl --fail-with-body --silent --show-error \
             -X POST "https://www.bitcoin4retail.com/api/buffer/publish" \
             -H "Authorization: Bearer $B4R_AUTOMATION_SECRET" \
@@ -71,8 +116,7 @@ jobs:
       - name: Validate Buffer preflight
         shell: bash
         run: |
-          FILE="${{ steps.manifest.outputs.path }}"
-          EXPECTED="$(jq '.posts | length' "$FILE")"
+          EXPECTED="$(jq '.posts | length' /tmp/prepared-manifest.json)"
           jq -e --argjson expected "$EXPECTED" '
             .ok == true and
             .dryRun == true and
@@ -87,8 +131,7 @@ jobs:
         id: mode
         shell: bash
         run: |
-          FILE="${{ steps.manifest.outputs.path }}"
-          TEST_ONLY="$(jq -r '.testOnly // false' "$FILE")"
+          TEST_ONLY="$(jq -r '.testOnly // false' /tmp/prepared-manifest.json)"
           echo "test_only=$TEST_ONLY" >> "$GITHUB_OUTPUT"
 
       - name: Publish approved package
@@ -97,8 +140,7 @@ jobs:
           B4R_AUTOMATION_SECRET: ${{ secrets.B4R_AUTOMATION_SECRET }}
         shell: bash
         run: |
-          FILE="${{ steps.manifest.outputs.path }}"
-          jq '.dryRun = false | {dryRun, organizationId, posts}' "$FILE" > /tmp/publish.json
+          jq '.dryRun = false | {dryRun, organizationId, posts}' /tmp/prepared-manifest.json > /tmp/publish.json
           curl --fail-with-body --silent --show-error \
             -X POST "https://www.bitcoin4retail.com/api/buffer/publish" \
             -H "Authorization: Bearer $B4R_AUTOMATION_SECRET" \
