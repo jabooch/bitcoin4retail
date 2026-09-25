@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-25",
+  "approved": true,
+  "testOnly": false,
+  "render": {
+    "date": "2026-09-25",
+    "headline": "Need more than a $600 checkout?",
+    "subheadline": "Square Bitcoin Invoices can support eligible invoice totals up to $2,500.",
+    "metric": "$2,500 invoice total",
+    "footer": "bitcoin4retail.com"
+  },
+  "posts": [
+    {
+      "service": "instagram",
+      "text": "Square Bitcoin isn't only a small-ticket checkout story. Eligible U.S. businesses can accept Bitcoin on Square Invoices for totals up to $2,500, including taxes, service charges, and shipping. Bitcoin payment processing is 0% through Dec. 31, 2026, then 1%. Eligibility limits apply; not available in New York, U.S. territories, or sanctioned jurisdictions. Guide: bitcoin4retail.com/square-bitcoin-invoices.html #Bitcoin #Square #SmallBusiness #Payments #Invoices",
+      "mode": "shareNow"
+    },
+    {
+      "service": "tiktok",
+      "text": "Square Bitcoin isn't just a $600 checkout story. Eligible U.S. businesses can accept Bitcoin on Square Invoices for totals up to $2,500. 0% Bitcoin payment processing through Dec. 31, 2026; 1% after. Eligibility limits apply. #bitcoin #square #smallbusiness #payments #invoices",
+      "mode": "shareNow"
+    },
+    {
+      "service": "youtube",
+      "youtubeTitle": "Square Bitcoin Invoices: Up to $2,500",
+      "text": "Square's in-person Bitcoin payment limit is currently $600, but eligible U.S. businesses can accept Bitcoin on Square Invoices for totals up to $2,500, including taxes, service charges, and shipping. Bitcoin payment processing is 0% through Dec. 31, 2026, then 1%. Eligibility limits apply. More: https://bitcoin4retail.com/square-bitcoin-invoices.html #Bitcoin #Square #SmallBusiness #Payments #Shorts",
+      "mode": "shareNow"
+    }
+  ],
+  "x": {
+    "text": "Square Bitcoin isn't only a $600 checkout story. Eligible U.S. businesses can accept Bitcoin on Square Invoices for totals up to $2,500. Processing: 0% through Dec. 31, 2026, then 1%. Eligibility limits apply. bitcoin4retail.com/square-bitcoin-invoices.html",
+    "image": "https://www.bitcoin4retail.com/media/social/2026-09-25/x.jpg"
+  }
+}
