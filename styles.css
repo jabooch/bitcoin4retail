@@ -50,3 +50,17 @@ footer{background:#0d0e0c;color:#b7b8b3;padding:60px 0 70px;margin-top:0;border-
 .article-wide{max-width:1120px}.table-scroll{overflow-x:auto;margin:26px 0}.provider-table{width:100%;min-width:900px;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}.provider-table th,.provider-table td{padding:17px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:.91rem;line-height:1.45}.provider-table th{background:#efede6;font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}.provider-table tr:last-child td{border-bottom:0}.provider-table th:last-child,.provider-table td:last-child{border-right:0}.provider-table a{color:var(--blue);font-weight:800}
 .review-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 34px}.review-facts div{border:1px solid var(--line);background:#fff;border-radius:16px;padding:18px}.review-facts span{display:block;color:var(--muted);font-size:.77rem;text-transform:uppercase;letter-spacing:.05em;font-weight:800;margin-bottom:5px}.review-facts strong{display:block;font-size:1.05rem;line-height:1.3}
 @media(max-width:980px){.provider-strip{grid-template-columns:repeat(2,1fr)}}@media(max-width:680px){.provider-strip,.review-facts{grid-template-columns:1fr}}
+
+/* Vendor logos on comparison surfaces */
+.provider-logo{display:block;max-width:132px;max-height:38px;width:auto;height:auto;object-fit:contain}
+.provider-logo.small{max-width:92px;max-height:30px}
+.provider-logo.icon{width:34px;height:34px;object-fit:contain;border-radius:8px}
+.provider-name{display:flex;align-items:center;gap:10px;min-width:120px}
+.provider-name.stack{align-items:flex-start;flex-direction:column;gap:8px}
+.provider-pill .provider-logo{max-width:120px;max-height:34px;margin-bottom:10px;filter:none}
+.section.gray .provider-pill .provider-logo.on-dark{background:#fff;border-radius:8px;padding:5px 7px}
+.provider-logo-hero{display:flex;align-items:center;min-height:54px;margin:0 0 18px}
+.provider-logo-hero .provider-logo{max-width:180px;max-height:52px}
+.provider-logo-hero .provider-logo.icon{width:52px;height:52px;max-width:52px;max-height:52px}
+.provider-table .provider-logo{margin-bottom:8px}
+@media(max-width:680px){.provider-logo{max-width:112px}.provider-logo-hero .provider-logo{max-width:150px}}
