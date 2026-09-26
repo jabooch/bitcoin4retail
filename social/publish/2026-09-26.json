@@ -1,0 +1,30 @@
+{
+  "date":"2026-09-26",
+  "approved":true,
+  "testOnly":false,
+  "render":{
+    "date":"2026-09-26",
+    "headline":"Accept Bitcoin. Keep dollars.",
+    "subheadline":"Square can convert Bitcoin payments to USD immediately—or let you settle in BTC.",
+    "metric":"BTC in → USD or BTC",
+    "footer":"bitcoin4retail.com/how-square-bitcoin-works.html"
+  },
+  "posts":[
+    {
+      "service":"instagram",
+      "text":"Accept Bitcoin. Keep dollars. Eligible Square sellers can take Lightning payments and settle in BTC or have Square convert the payment to USD immediately. Bitcoin payment processing is 0% through Dec. 31, 2026, then 1%. Current limits: $600 per transaction and $20,000 per day; not available in New York. Guide: bitcoin4retail.com/how-square-bitcoin-works.html #Bitcoin #Retail #Square #Payments",
+      "mode":"shareNow"
+    },
+    {
+      "service":"tiktok",
+      "text":"Accepting Bitcoin does not mean you have to hold Bitcoin. Eligible Square sellers can take Lightning payments and settle in BTC or USD. 0% processing through Dec. 31, 2026; 1% after. $600 max per transaction; not available in New York. #bitcoin #retail #square #payments",
+      "mode":"shareNow"
+    },
+    {
+      "service":"youtube",
+      "youtubeTitle":"Accept Bitcoin Without Holding Bitcoin | Square",
+      "text":"Eligible Square sellers can accept Bitcoin over Lightning and settle in BTC or have Square convert the payment to USD immediately. Processing is 0% through Dec. 31, 2026, then 1%. Current limit: $600 per transaction; not available in New York. More: https://bitcoin4retail.com/how-square-bitcoin-works.html #Bitcoin #Square #Retail #Shorts",
+      "mode":"shareNow"
+    }
+  ]
+}
