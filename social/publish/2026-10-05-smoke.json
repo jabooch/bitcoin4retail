@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-05-smoke",
+  "approved": true,
+  "testOnly": true,
+  "render": {
+    "date": "2026-10-05-smoke",
+    "headline": "Bitcoin4Retail automation test",
+    "subheadline": "End-to-end publishing preflight.",
+    "metric": "GitHub → Vercel → Buffer",
+    "footer": "bitcoin4retail.com"
+  },
+  "posts": [
+    {"service":"instagram","text":"Bitcoin4Retail automation test.","mode":"shareNow"},
+    {"service":"tiktok","text":"Bitcoin4Retail automation test.","mode":"shareNow"},
+    {"service":"youtube","youtubeTitle":"Bitcoin4Retail automation test","text":"Bitcoin4Retail automation test.","mode":"shareNow"},
+    {"service":"twitter","text":"Bitcoin4Retail automation test.","mode":"shareNow"}
+  ]
+}
