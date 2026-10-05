@@ -1,6 +1,8 @@
 name: Publish Bitcoin4Retail Social
 
 on:
+  schedule:
+    - cron: "15 13 * * 1-5"
   push:
     branches: [main]
     paths:
@@ -8,12 +10,16 @@ on:
   workflow_dispatch:
     inputs:
       manifest_path:
-        description: "Path to a publish manifest JSON file"
-        required: true
-        default: "social/publish/latest.json"
+        description: "Optional path to a publish manifest JSON file. Leave blank to auto-generate from the live site."
+        required: false
+        default: ""
 
 permissions:
   contents: write
+
+concurrency:
+  group: bitcoin4retail-social-publisher
+  cancel-in-progress: false
 
 jobs:
   publish:
@@ -24,14 +30,23 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Resolve manifest path
+      - name: Resolve or generate manifest
         id: manifest
         shell: bash
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            FILE="${{ inputs.manifest_path }}"
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            FILE="/tmp/auto-manifest.json"
+            python3 scripts/build_social_manifest.py "$FILE"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            INPUT="${{ inputs.manifest_path }}"
+            if [ -n "$INPUT" ]; then
+              FILE="$INPUT"
+            else
+              FILE="/tmp/auto-manifest.json"
+              python3 scripts/build_social_manifest.py "$FILE"
+            fi
           else
-            FILE="$(git diff --name-only HEAD^ HEAD | grep -E '^social/publish/[^/]+\.json$' | tail -n 1 || true)"
+            FILE="$(git diff --name-only HEAD^ HEAD | grep -E '^social/publish/[^/]+\\.json$' | tail -n 1 || true)"
           fi
 
           if [ -z "$FILE" ] || [ ! -f "$FILE" ]; then
@@ -84,10 +99,12 @@ jobs:
           FILE="${{ steps.manifest.outputs.path }}"
           DATE="${{ steps.render.outputs.date }}"
           BASE="https://www.bitcoin4retail.com/media/social/$DATE"
-          jq --arg vertical "$BASE/vertical.mp4" '
+          jq --arg vertical "$BASE/vertical.mp4" --arg x "$BASE/x.jpg" '
             .posts |= map(
               if (.service=="instagram" or .service=="tiktok" or .service=="youtube")
               then .media=[{"type":"video","url":$vertical}]
+              elif (.service=="twitter" or .service=="x")
+              then .media=[{"type":"image","url":$x}]
               else . end
             )
           ' "$FILE" > /tmp/prepared-manifest.json
@@ -96,15 +113,21 @@ jobs:
         shell: bash
         run: |
           DATE="${{ steps.render.outputs.date }}"
-          URL="https://www.bitcoin4retail.com/media/social/$DATE/vertical.mp4"
-          for i in $(seq 1 30); do
-            if curl -fsSI "$URL" >/dev/null; then
-              exit 0
+          for ASSET in vertical.mp4 x.jpg; do
+            URL="https://www.bitcoin4retail.com/media/social/$DATE/$ASSET"
+            READY=false
+            for i in $(seq 1 36); do
+              if curl -fsSI "$URL" >/dev/null; then
+                READY=true
+                break
+              fi
+              sleep 5
+            done
+            if [ "$READY" != "true" ]; then
+              echo "Media deployment timed out for $ASSET."
+              exit 1
             fi
-            sleep 5
           done
-          echo "Media deployment timed out."
-          exit 1
 
       - name: Buffer dry run
         env:
@@ -153,3 +176,9 @@ jobs:
             -H "Content-Type: application/json" \
             --data-binary @/tmp/publish.json \
             | tee /tmp/buffer-result.json
+
+          jq -e '.ok == true' /tmp/buffer-result.json >/dev/null || {
+            echo "One or more Buffer posts failed."
+            cat /tmp/buffer-result.json
+            exit 1
+          }
