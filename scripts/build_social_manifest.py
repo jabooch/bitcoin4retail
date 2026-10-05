@@ -8,9 +8,9 @@ from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 import xml.etree.ElementTree as ET
 
-SITE = "https://www.bitcoin4retail.com"
+SITE = "https://bitcoin4retail.com"
 SITEMAP = f"{SITE}/sitemap.xml"
-UA = "Bitcoin4RetailPublisher/1.0 (+https://www.bitcoin4retail.com)"
+UA = "Bitcoin4RetailPublisher/1.0 (+https://bitcoin4retail.com)"
 
 class MetaParser(HTMLParser):
     def __init__(self):
